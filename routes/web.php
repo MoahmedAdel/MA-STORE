@@ -1,6 +1,5 @@
 <?php
 
-use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\User\DashboardController as user;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
@@ -18,9 +17,7 @@ Route::middleware('auth')->group(function () {
 
 require __DIR__ . '/auth.php';
 
-Route::middleware(['auth','admin'])->group(function () {
-    Route::get('admin/dashboard', [DashboardController::class, 'index'])->name('dashboardAdmin');
-});
+require __DIR__ . '/admin.php';
 
 // Route::middleware(['can:isUser'])->group(function () {
 //     Route::get('dashboard', [user::class, 'index'])->name('dashboard');
