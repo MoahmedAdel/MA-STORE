@@ -56,6 +56,11 @@
                                 </label>
                                 <input type="text" name="name" id="category-name" value="{{ $category->name }}"
                                     class="w-full rounded-lg border-[1.5px] border-stroke bg-transparent px-5 py-3 font-normal text-black outline-none transition focus:border-primary active:border-primary disabled:cursor-default disabled:bg-whiter dark:border-form-strokedark dark:bg-form-input dark:text-white dark:focus:border-primary" />
+                                @if ($errors->any())
+                                    @foreach ($errors->all() as $error)
+                                        {{ $error }}
+                                    @endforeach
+                                @endif
                             </div>
 
                             {{-- input image category --}}
