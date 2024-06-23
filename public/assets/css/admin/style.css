@@ -2047,6 +2047,10 @@ body {
   margin-left: -1.25rem;
 }
 
+.-ml-6\.5 {
+  margin-left: 1.625rem;
+}
+
 .-mt-22 {
   margin-top: -5.5rem;
 }
@@ -2449,6 +2453,10 @@ body {
 
 .w-full {
   width: 100%;
+}
+
+.w-1\/2 {
+  width: 50%;
 }
 
 .w-screen {
@@ -4959,6 +4967,20 @@ body {
   .sm\:text-title-xl2 {
     font-size: 33px;
     line-height: 45px;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .sm\:flex-col {
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+  }
+
+  .sm\:w-full {
+    width: 100%;
   }
 }
 

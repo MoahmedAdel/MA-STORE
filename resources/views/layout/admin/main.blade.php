@@ -16,7 +16,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <div class="flex h-screen overflow-hidden">
 
         <!-- ===== Sidebar Start ===== -->
-        @include('layout.admin.partials.sidebar',['active' => ''])
+        @include('layout.admin.partials.sidebar', ['active' => ''])
         <!-- ===== Sidebar End ===== -->
 
         <!-- ===== Content Area Start ===== -->
@@ -34,6 +34,7 @@ $watch('darkMode', value => localStorage.setItem('darkMode', JSON.stringify(valu
     <!-- ===== Page Wrapper End ===== -->
 
     @include('layout.admin.partials.footer-script')
+    @yield('alerts')
 </body>
 
 </html>
