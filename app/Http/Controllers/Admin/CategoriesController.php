@@ -21,7 +21,17 @@ class CategoriesController extends Controller
     public function index()
     {
         //get all categories
-        $categories = Category::whereNull('parent_id')->get();
+        $request = request();
+        $query = Category::query();
+
+        if ($name = $request->query('name')) {
+            $query->whereNull('parent_id')->where('name', 'LIKE', "%{$name}%");
+        }
+        if ($status = $request->query('status')) {
+            $query->where('status', '=', $status);
+        }
+
+        $categories = $query->paginate(2);
 
         //get all sub categories
         $subCategories = Category::whereNotNull('parent_id')->get();
