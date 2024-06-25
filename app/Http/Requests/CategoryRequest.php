@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use App\Models\Category;
+use App\Rules\filter;
 use Illuminate\Foundation\Http\FormRequest;
 
 class CategoryRequest extends FormRequest
@@ -26,7 +27,27 @@ class CategoryRequest extends FormRequest
         $category = $id ? Category::findOrFail($id) : null;
         $uniqueNameRule = $category ? "unique:categories,name,$category->name" : 'unique:categories,name';
         return [
-            'name' => "required|string|min:3|$uniqueNameRule",
+            'name' => [
+                'required',
+                'string',
+                'min:3',
+                
+                // Custom Validation
+
+                // function ($attribute, $value, $fails) {
+                //     if (in_array(strtolower($value), ['laravel', 'css', 'blade'])) {
+                //         $fails('This name forbidden!');
+                //     }
+                // },
+
+                // General validation "rule"
+                // new filter,
+
+                // General validation "provider"
+                // 'filter:laravel,php,css',
+
+                $uniqueNameRule,
+            ],
             'image' => 'nullable|mimes:jpg,png',
             'status' => 'in:active,inactive,upcoming',
             'parent_id' => 'nullable|exists:categories,id',
